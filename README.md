@@ -13,20 +13,44 @@
 - 模拟面试、陪练追问
 
 ## 安装
-把整个 `job-hunt-coach/` 目录放到你的 Claude skills 目录下：
 
-- **个人全局（推荐）**
-  - macOS / Linux：`~/.claude/skills/job-hunt-coach/`
-  - Windows：`%USERPROFILE%\.claude\skills\job-hunt-coach\`
-- 或放某个项目内：`<项目>/.claude/skills/job-hunt-coach/`
+> 前提：需要装了 `git`。
 
-用 git：
-```bash
-cd ~/.claude/skills
-git clone <仓库地址> job-hunt-coach
+### 方式一：让 AI agent 帮你装（最省事，推荐）
+
+如果你用 Claude Code（或其它能跑命令的编码 agent），**把下面这段话整段贴给它**，它会帮你克隆并装好：
+
+```text
+帮我装一个 Claude Code 的 skill（一个求职面试教练，叫 job-hunt-coach）。
+
+请用 git 把这个公开仓库克隆到我的个人 skills 目录：
+  仓库：https://github.com/forestlii/job-hunt-coach.git
+  目标：~/.claude/skills/job-hunt-coach
+  （Windows 就是 %USERPROFILE%\.claude\skills\job-hunt-coach；
+   如果 .claude\skills 目录还没有，先建好它。）
+
+装完帮我确认 SKILL.md 在 ~/.claude/skills/job-hunt-coach/ 下，
+并告诉我是不是要新开一个会话它才生效、以及我该怎么触发它。
 ```
 
-放好后，新开一个 Claude 会话，提到任何求职 / 面试 / 简历 / 谈薪相关的事，skill 会自动触发。也可以直接说"用 job-hunt-coach 帮我准备面试"。
+> 💡 agent 跑 `git clone` 时可能弹一次权限确认，点允许即可。
+
+### 方式二：自己用 git 装
+
+```bash
+# macOS / Linux
+git clone https://github.com/forestlii/job-hunt-coach.git ~/.claude/skills/job-hunt-coach
+```
+```powershell
+# Windows PowerShell
+git clone https://github.com/forestlii/job-hunt-coach.git $env:USERPROFILE\.claude\skills\job-hunt-coach
+```
+
+也可以装在某个项目内：`<项目>/.claude/skills/job-hunt-coach/`。
+
+### 装完怎么生效
+
+skill 列表是在**会话启动时**加载的，所以装完要**新开一个会话**（或重启 Claude Code）它才会出现。之后提到任何求职 / 面试 / 简历 / 谈薪相关的事，skill 会自动触发；也可以直接说"用 job-hunt-coach 帮我准备面试"。
 
 ## 怎么用
 直接说你的诉求，并尽量提供：
